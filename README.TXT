@@ -11,5 +11,5 @@ HOW TO START THIS PROJECT:
 AUTHORS:
 USER INSTRUCTIONS:
 REMEMBER:
-  change all lists to array
+generalize refill and fill
   finish tablecards and refill method
