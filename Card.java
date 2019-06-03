@@ -7,28 +7,32 @@ public class Card  {
     int myRank;
     int mySuit;
     ImageIcon icon;
-    
+    JLabel label; 
     public Card(int myRank, int mySuit){
         this.myRank = myRank;
         this.mySuit = mySuit;
-        icon= new ImageIcon("Cards/"+getSuitToWord(mySuit)+" "+myRank+".png"); 
-        
-        JFrame frame = new JFrame();
-        ImageIcon icon = new ImageIcon("icon");
-        JLabel label = new JLabel(icon);
-        frame.add(label);
-        frame.setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);
-        frame.add(label);
-        frame.setVisible (true);
+        icon = new ImageIcon(this.getIcon());
+        label =  new JLabel();
+        label.setIcon(icon);
     }
-
+    
+    public String getIcon(){
+        System.out.println("Cards/"+getSuitToWord(mySuit)+" "+myRank+".png");
+        String icon= "Cards/"+getSuitToWord(mySuit)+" "+myRank+".png";
+        return icon;
+    }
+    
+    public JLabel getImage(){
+        return label;
+    }
+    
     public int rank() {
         return myRank;
     }
     
     public String getSuitToWord(int num){
         if(num==0){
-            return "diamonds";        
+            return "dimonds";        
         }else if(num==1){
             return "clubs";        
         }else if(num==2){
