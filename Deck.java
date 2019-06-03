@@ -1,32 +1,35 @@
 import java.util.*;
 public class Deck
 {
-    
+
     public ArrayList<Card>myCards;
-    public Deck( )
+    public Deck()
     {
         myCards= new ArrayList<Card>();
         fillDeck(52);
     }
     
-    private void fillDeck(int num){
-        Random r = new Random();
-        while(myCards.size() < num){
-            
-            int suit = r.nextInt(4) + 1;
-            int rank = r.nextInt(12) + 2; 
-
-            if(!cardExists(suit,rank)){
-                Card c = new Card(rank,suit);
-                myCards.add(c);
-            }
-        }
-
+    public ArrayList getCards(){
+        return myCards;
     }
     
+    private void fillDeck(int num){
+        
+        for(int numCard=0; numCard<num;numCard++){
+            for(int rank=1; rank<14; rank++){
+                for(int suit=0; suit<4;suit++){
+                    myCards.add(new Card(rank,suit));
+                }
+            }
+
+        }
+        shuffle();
+
+    }
+
     private boolean cardExists(int suit, int rank)
     {
-       
+
         boolean cExists= false;
         for(int y = 0; y < myCards.size();y++)
         {
@@ -40,13 +43,23 @@ public class Deck
         }
         return cExists;
     }
-    
+
     public void fill(ArrayList<Card> List, int num){
-        for( int x = 1; List.size() < num; x++){
+        for( int x = 0; List.size() < num;){
             List.add(myCards.get(x));
             myCards.remove(x);
         }
     }
     
-    
+    public void shuffle(){
+        Random r = new Random();
+        int count = 0;
+        while(count<100){
+            int rand = r.nextInt(52);
+            myCards.add((myCards.remove(rand)));
+            count++;
+        }
+        
+    }
 }
+
