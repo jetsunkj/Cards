@@ -15,20 +15,21 @@ public class Card  {
         label =  new JLabel();
         label.setIcon(icon);
     }
-    
+
     public String getIcon(){
         System.out.println("Cards/"+getSuitToWord(mySuit)+" "+myRank+".png");
         String icon= "Cards/"+getSuitToWord(mySuit)+" "+myRank+".png";
         return icon;
     }
-    
+
     public JLabel getImage(){
         return label;
     }
-    
+
     public int rank() {
         return myRank;
     }
+
     
     public String getSuitToWord(int num){
         if(num==0){
@@ -37,17 +38,15 @@ public class Card  {
             return "clubs";        
         }else if(num==2){
             return "hearts";        
-        }else{
+        }else if(num==3)
             return "spades";
-        }
-        
+        else
+            return "back";
     }
-    
-   
- 
+
+
     public int suit() {
         return mySuit;
     }
-    
 
 }
